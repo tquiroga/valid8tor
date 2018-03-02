@@ -1,12 +1,13 @@
 {
-  "name": "valead8",
+  "name": "valid8tor",
   "version": "1.0.0",
   "description": "Simple JS validation library",
   "main": "index.js",
+  "repository": "https://github.com/tquiroga/valid8tor",
   "scripts": {
     "test": "mocha --require babel-core/register"
   },
-  "author": "",
+  "author": "Thomas Quiroga <thomas@askthomas.co.uk>",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
