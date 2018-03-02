@@ -1,0 +1,22 @@
+{
+  "name": "valead8",
+  "version": "1.0.0",
+  "description": "Simple JS validation library",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require babel-core/register"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "mocha": "^5.0.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "moment": "^2.20.1",
+    "npm": "^5.7.1",
+    "sprintf-js": "^1.1.1"
+  }
+}
