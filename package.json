@@ -8,6 +8,9 @@
     "test": "mocha --require babel-core/register"
   },
   "author": "Thomas Quiroga <thomas@askthomas.co.uk>",
+  "contributors": [{
+    "Thibaut Rey <twitter.com/thibautrey>"
+  }],
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
