@@ -5,9 +5,17 @@ const rules = {
 };
 
 const data = {
-  firstname: '',
+  firstname: 'Yo',
 };
 
 const res = validate(data, rules);
-console.log('Result from validation: ', res);
-console.log('Valid? ', isValid(data, rules));
+
+res.then(() => {
+  console.log('Valid thing');
+}).catch((errors) => {
+  console.log('Not valid', errors);
+});
+
+// console.log('Result from validation: ', res);
+// console.log('Valid? ', isValid(data, rules));
+

@@ -320,14 +320,15 @@ const isFieldValid = (field, value, rule) => {
 };
 
 /**
- * Validate an object
+ * Validate an object and return an array of errors or empty array if valid
  * @param {*} rulesObj The rules
  * @param {*} dataObj The object with the data to validate
  * @param {*} customValidation function
+ * @return array
  */
-const validate = (dataObj, rulesObj, customValidation = null) => {
+const validateSync = (dataObj, rulesObj, customValidation = null) => {
   const rules = parseRules(rulesObj);
-  const results = [];
+  const errors = [];
   Object.keys(dataObj).forEach((field) => {
     if (dataObj.hasOwnProperty(field)) {
       const value = _.get(dataObj, field);
@@ -335,20 +336,45 @@ const validate = (dataObj, rulesObj, customValidation = null) => {
       const validation = isFieldValid(field, value, fieldRule);
 
       if (validation.errors.length > 0) {
-        results.push({ field, errors: validation.errors });
+        errors.push({ field, errors: validation.errors });
       }
     }
   });
 
-  return results;
+  return errors;
 };
 
+/**
+ * Check if an object is valid or not, testing against a rule set
+ * @param {*} dataObj 
+ * @param {*} rulesObj 
+ * @return bool
+ */
 const isValid = (dataObj, rulesObj) => {
-  const validation = validate(dataObj, rulesObj);
+  const validation = validateSync(dataObj, rulesObj);
   return validation.length === 0;
 };
 
+/**
+ * Check if an object is valid and return a promise
+ * @param {*} dataObj 
+ * @param {*} rulesObj 
+ * @param {*} customValidation 
+ * @return Promise
+ */
+const validate = (dataObj, rulesObj, customValidation = null) => {
+  const errors = validateSync(dataObj, rulesObj, customValidation = null);
+  return new Promise((resolve, reject) => {
+    if (errors.length > 0) {
+      reject(errors);
+    } else {
+      resolve();
+    }
+  });
+}
+
 export {
+  validateSync,
   validate,
   isValid,
 };
