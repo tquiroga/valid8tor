@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/tquiroga/valid8tor.svg?branch=master)](https://travis-ci.org/tquiroga/valid8tor)
+#valid8tor
 
 A dead simple JS validation library inspired by Laravel rules.
 
