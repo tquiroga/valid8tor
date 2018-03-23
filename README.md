@@ -11,18 +11,23 @@ A dead simple JS validation library inspired by Laravel rules.
 
 Valid8tor takes an object (the data) and validate using set of rules define in object containing the same keys and validation rules. Example: 
 ```
-import { validate } from 'valid8tor';
+import { validate, validateSync } from 'valid8tor';
 
+// You can combine several rules
 const rules = {
-  firstname: 'required,alpha_dash',
-  lastname: 'alpha_dash',
+  firstname: 'required|alpha_dash|min:3',
+  lastname: 'alpha_dash|nullable',
   email: 'required|email',
+  jobs: 'array|min:1|max:5',
+  website: 'required|url',
 };
 
 const data = {
   firstname: 'John',
   lastname: 'Doe',
-  email: 'john@doe.io'
+  email: 'john@doe.io',
+  jobs: ['Web Developer', 'Traveler', 'Lifehacker'],
+  website: 'https://askthomas.co.uk',
 };
 
 validate(data, rules).then(() => {
@@ -31,6 +36,10 @@ validate(data, rules).then(() => {
   // not valid
   console.log(errors);
 });
+
+// Or if you want synchronous validation
+validateSync(data, rules) // => Will return either [] or example: [{ field: 'firstname', error: 'The firstname field is required' }]
+
 ```
 
 valid8tor provides 3 functions:
@@ -43,7 +52,7 @@ valid8tor provides 3 functions:
 |--|--|
 | `required` | Make sure a value is defined. |
 | `nullable` | Accept a value as null or undefined.
-| `min:3` | : **String** Check that string has minimum length (3 characters in this example). **Number**: Check that a number is at least equal to 3. **Array**: Check that an array has at leat 3 elements.|
+| `min:3` | **String** Check that string has minimum length (3 characters in this example). **Number**: Check that a number is at least equal to 3. **Array**: Check that an array has at leat 3 elements.|
 | `max:10` | **String**: Check that string has a maximum length (10 characters in this example). **Number**: Check that a number is at 10 at max. **Array**: Check that an array has at max 10 elements. |
 | `size:5` | **String**: Check that the length of the string is equal to 5 (in the example). **Array** Check that the size of an array is equal to 5.
 | `email` | Check that a value is a correct email address.|
