@@ -373,7 +373,7 @@ const validate = (dataObj, rulesObj, customValidation = null) => {
   });
 }
 
-export {
+module.exports = {
   validateSync,
   validate,
   isValid,

@@ -1,27 +1,81 @@
 # valid8tor
-A dead simple JS validation library inspired by laravel rules
+A dead simple JS validation library inspired by Laravel rules
+# Installation
+
+`npm i valid8tor --save`
 
 ## Usage
 
--To be added-
+Valid8tor takes an object (the data) and validate using set of rules define in object containing the same keys and validation rules. Example: 
+```
+import { validate } from 'valid8tor';
 
-## Contributor setup
+const rules = {
+  firstname: 'required,alpha_dash',
+  lastname: 'alpha_dash',
+  email: 'required|email',
+};
 
-Install dependencies
-```npm install```
+const data = {
+  firstname: 'John',
+  lastname: 'Doe',
+  email: 'john@doe.io'
+};
 
-You can use dev.js as a playground using [Parcel](https://parceljs.org/)
-```parcel index.html```
+validate(data, rules).then(() => {
+  // data is valid
+}).catch((errors) => {
+  // not valid
+  console.log(errors);
+});
+```
+
+valid8tor provides 3 functions:
+- `validate(dataObj, rulesObj)` Validate an object for a given set of rules and return a promise.
+- `validateSync(dataObj, rulesObj)` Validate and object and return an array of error or empty array if the data is valid.
+- `isValid(dataObj, rulesObj)` Validate the object and return `true` or `false` if valid or not.
+
+### Validation rules
+| Rule | Description |
+|--|--|
+| `required` | Make sure a value is defined. |
+| `nullable` | Accept a value as null or undefined.
+| `min:3` | : **String** Check that string has minimum length (3 characters in this example). **Number**: Check that a number is at least equal to 3. **Array**: Check that an array has at leat 3 elements.|
+| `max:10` | **String**: Check that string has a maximum length (10 characters in this example). **Number**: Check that a number is at 10 at max. **Array**: Check that an array has at max 10 elements. |
+| `size:5` | **String**: Check that the length of the string is equal to 5 (in the example). **Array** Check that the size of an array is equal to 5.
+| `email` | Check that a value is a correct email address.|
+| `url` | Check that a value is a valid a URL (http or https only for now)|
+| `alpha` | Check that the value only contains alphabetic characters (a to z and A to Z)|
+| `alpha_dash` | Check that the value only contains alphabetic characters, hyphens and underscores (a-z, A-Z, `-` and `_` ) |
+|  `alpha_num` | Check that the value only contains alphabetic characters, hyphens and underscores (a-z, A-Z and 0-9 )|
+| `integer` | Check that the value is an integer (positive, negative,  null and 0x0)|
+| `decimal` | Check that the value is a decimal (positive, negative or null) |
+| `numeric` | Check that value is numeric (not null, not decimal)|
+| `array` | Check that the value is an array (empty or not)|
+| `accepted` | Check acceptance, example when you have terms and conditions, etc. This rule accept: `1`, `true`, `yes` and `on`.|
+| `string` | Check that the value is a string |
+| `boolean` | Check that value is a boolean |
+| `date` | Check that the value is a `Date` or a `moment` instance.
+| `after` | Coming soon |
+| `after_or_equal` |  Coming soon |
+| `before` | Coming soon |
+| `before_or_equal` | Coming soon |
+| `between` | Coming soon |
+
+
+## Testing
 
 Testing with [Mocha](https://mochajs.org/):
 ```npm run test```
 
-## To do
+## Contributions
 
-- Return in a Promise instead of current output
+You can use dev.js as a playground using [Parcel](https://parceljs.org/)
+```parcel index.html```
+
+**To do**
+
 - Allow override of error messages
 - Allow to pass a object containing custom validation functions
-- Add Date/time related rules
-- Add production task (minimify, etc)
+- Add Date/time related rules (after, before, etc)
 - Add more tests
-- ...
