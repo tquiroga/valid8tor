@@ -1,13 +1,13 @@
 {
   "name": "valid8tor",
   "version": "0.1.0",
-  "description": "Simple JS validation library",
+  "description": "A dead simple JS validation library inspired by Laravel validation rules.",
   "main": "index.js",
   "repository": "https://github.com/tquiroga/valid8tor",
   "scripts": {
     "test": "mocha --require babel-core/register"
   },
-  "author": "Thomas Quiroga <thomas@askthomas.co.uk>",
+  "author": "Thomas Quiroga",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -17,7 +17,6 @@
   "dependencies": {
     "lodash": "^4.17.5",
     "moment": "^2.20.1",
-    "npm": "^5.7.1",
     "sprintf-js": "^1.1.1"
   }
 }

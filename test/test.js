@@ -606,4 +606,47 @@ describe('Type validation', function () {
     });
   });
   
+  describe('# between', function () {
+    beforeEach(function () {
+      data = { amount: 2 };
+      rules = { amount: 'between:1,5' };
+    });
+
+    it('validates with a number within range', function () {
+      assert.equal(isValid(data, rules), true);
+    });
+
+    it('validates with a number within range (test inclusion min)', function () {
+      assert.equal(isValid({ amount: 1 }, rules), true);
+    });
+
+    it('validates with a number within range (test inclusion max)', function () {
+      assert.equal(isValid({ amount: 5 }, rules), true);
+    });
+
+    it('does not validates with a number outside the range', function () {
+      assert.equal(isValid({ amount: 12 }, rules), false);
+    });
+
+    it('validates with an array of 3 elements with interval 1-5', function () {
+      assert.equal(isValid({ amount: [2, 3, 3]}, rules), true);
+    });
+
+    it('does not validate an empty array if range 1-5', function () {
+      assert.equal(isValid({ amount: [] }, rules), false);
+    });
+
+    it('does validate an empty array if range 0-5', function () {
+      assert.equal(isValid({ amount: [] }, rules), false);
+    });
+
+    it('validates with a string of 4 characters with interval 1-5', function () {
+      assert.equal(isValid({ amount: 'Test' }, rules), true);
+    });
+
+    it('does not validate a string of 10 characters with interval 1-5', function () {
+      assert.equal(isValid({ amount: 'Testing that' }, rules), false);
+    });
+  });
+
 });

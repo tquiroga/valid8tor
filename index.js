@@ -133,7 +133,7 @@ const isBetween = (value, min, max) => {
   } else if (typeof value === 'number') {
     return value >= min && value <= max;
   }
-  console.warn('between rule should only be used with string, array and numbers');
+  console.warn('The `between` rule should only be used with string, array and numbers');
   return false;
 };
 
@@ -308,6 +308,11 @@ const isFieldValid = (field, value, rule) => {
       case 'size':
         if (!isSize(value, rule.params[0])) {
           errors.push(sprintf(messages.size, field));
+        }
+        break;
+      case 'between':
+        if (rule.params.length >= 2 && !isBetween(value, rule.params[0], rule.params[1])) {
+          errors.push(sprintf(messages.between, field));
         }
         break;
 

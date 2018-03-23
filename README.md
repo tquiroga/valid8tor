@@ -54,7 +54,8 @@ valid8tor provides 3 functions:
 | `nullable` | Accept a value as null or undefined.
 | `min:3` | **String** Check that string has minimum length (3 characters in this example). **Number**: Check that a number is at least equal to 3. **Array**: Check that an array has at leat 3 elements.|
 | `max:10` | **String**: Check that string has a maximum length (10 characters in this example). **Number**: Check that a number is at 10 at max. **Array**: Check that an array has at max 10 elements. |
-| `size:5` | **String**: Check that the length of the string is equal to 5 (in the example). **Array** Check that the size of an array is equal to 5.
+| `size:5` | **String**: Check that the length of the string is equal to 5 (in the example). **Array** Check that the size of an array is equal to 5.|
+| `between:1,5` | **Number** Check that a number is in the interval (inclusive). **Array**: Check that an array has a number at least one and at max 5 elements (in this example). **String**: Check that the length of the string is in that interval |
 | `email` | Check that a value is a correct email address.|
 | `url` | Check that a value is a valid a URL (http or https only for now)|
 | `ip` | Check that a value is a valid IP v4 address |
@@ -76,7 +77,6 @@ valid8tor provides 3 functions:
 | `after_or_equal` |  Coming soon |
 | `before` | Coming soon |
 | `before_or_equal` | Coming soon |
-| `between` | Coming soon |
 
 
 ## Testing
