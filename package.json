@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "https://github.com/tquiroga/valid8tor",
   "scripts": {
-    "test": "mocha --require babel-core/register"
+    "test": "mocha --require babel-core/register",
   },
   "author": "Thomas Quiroga <thomas@askthomas.co.uk>",
   "license": "ISC",
