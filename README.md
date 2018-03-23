@@ -1,5 +1,5 @@
 [![Build Status](https://travis-ci.org/tquiroga/valid8tor.svg?branch=master)](https://travis-ci.org/tquiroga/valid8tor)
-#valid8tor
+# valid8tor
 
 A dead simple JS validation library inspired by Laravel rules.
 
@@ -48,12 +48,16 @@ valid8tor provides 3 functions:
 | `size:5` | **String**: Check that the length of the string is equal to 5 (in the example). **Array** Check that the size of an array is equal to 5.
 | `email` | Check that a value is a correct email address.|
 | `url` | Check that a value is a valid a URL (http or https only for now)|
+| `ip` | Check that a value is a valid IP v4 address |
+| `ipv6` | Check that a value is a valid IP v6 address |
 | `alpha` | Check that the value only contains alphabetic characters (a to z and A to Z)|
 | `alpha_dash` | Check that the value only contains alphabetic characters, hyphens and underscores (a-z, A-Z, `-` and `_` ) |
 |  `alpha_num` | Check that the value only contains alphabetic characters, hyphens and underscores (a-z, A-Z and 0-9 )|
+|  `alphanum_dash` | Check that the value only contains alphabetic characters, numbers, hyphens and underscores (a-z, A-Z, 0-9, `-` and `_` )|
 | `integer` | Check that the value is an integer (positive, negative,  null and 0x0)|
 | `decimal` | Check that the value is a decimal (positive, negative or null) |
-| `numeric` | Check that value is numeric (not null, not decimal)|
+| `numeric` | Check that the value is numeric (not null, not decimal)|
+| `base64` | Check that the value is base64 format |
 | `array` | Check that the value is an array (empty or not)|
 | `accepted` | Check acceptance, example when you have terms and conditions, etc. This rule accept: `1`, `true`, `yes` and `on`.|
 | `string` | Check that the value is a string |
