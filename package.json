@@ -6,7 +6,8 @@
   "repository": "https://github.com/tquiroga/valid8tor",
   "scripts": {
     "test": "mocha --require babel-core/register",
-    "build": "node_modules/.bin/babel --presets es2015 src -d dist"
+    "build": "node_modules/.bin/babel --presets es2015 src -d dist",
+    "prepublish": "npm run build"
   },
   "author": "Thomas Quiroga",
   "license": "ISC",
