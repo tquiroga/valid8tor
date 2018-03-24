@@ -1,5 +1,5 @@
 import moment from 'moment';
-import { validate, isValid } from '../dist/index';
+import { validate, isValid } from '../src/index';
 var assert = require('assert');
 
 // 1. Basic validation
