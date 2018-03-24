@@ -1,6 +1,6 @@
 {
   "name": "valid8tor",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "A dead simple JS validation library inspired by Laravel validation rules.",
   "main": "./distribution/index.js",
   "repository": "https://github.com/tquiroga/valid8tor",
