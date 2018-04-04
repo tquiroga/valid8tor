@@ -335,7 +335,7 @@ const validateSync = (dataObj, rulesObj, customValidation = null) => {
   const rules = parseRules(rulesObj);
   const errors = [];
   Object.keys(dataObj).forEach((field) => {
-    if (dataObj.hasOwnProperty(field)) {
+    if (dataObj.hasOwnProperty(field), rulesObj.hasOwnProperty(field)) {
       const value = _.get(dataObj, field);
       const fieldRule = _.find(rules, r => r.hasOwnProperty(field));
       const validation = isFieldValid(field, value, fieldRule);

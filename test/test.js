@@ -5,6 +5,24 @@ var assert = require('assert');
 // 1. Basic validation
 describe('Basic validation', function () {
   let data, rules;
+
+  describe('General testing', function () {
+    beforeEach('Make the data and rules', function () {
+      data = {
+        cat: 'Nacho',
+        plop: 'Hello',
+      };
+      rules = {
+        cat: 'required',
+      };
+    });
+
+    // Required string
+    it('ignores data object keys that are not in rules object', function () {
+      assert.equal(isValid(data, rules), true);
+    });
+  });
+
   describe('# required', function () {
     beforeEach('Make the data and rules', function () {
       data = {
